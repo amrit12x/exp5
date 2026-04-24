@@ -1,6 +1,6 @@
-Name: Anuj
+Name: Guramrit Singh
 
-UID: 24BDA70315
+UID: 24BDA70334
 
 Group: 24BDS-3(B)
 
