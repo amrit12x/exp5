@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 3 - Product Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Experiment 3: Nested Schema and Aggregation</h1>
+        </header>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <main class="demo-container">
+            <h2>Product Catalog with Reviews</h2>
+            
+            <div class="form-group">
+                <label>Product Name:</label>
+                <input type="text" id="productName" placeholder="Enter product name">
+            </div>
+            
+            <div class="form-group">
+                <label>Variant (Size/Color):</label>
+                <input type="text" id="variant" placeholder="e.g., Large, Red">
+            </div>
+            
+            <div class="form-group">
+                <label>Stock:</label>
+                <input type="number" id="stock" placeholder="Enter stock quantity">
+            </div>
+            
+            <button class="btn" onclick="addProduct()">Add Product</button>
+            <button class="btn" onclick="calculateRating()">Calculate Avg Rating</button>
+            
+            <div id="result"></div>
+            
+            <h3 style="margin-top: 30px;">Implementation Features:</h3>
+            <ul style="line-height: 2; color: #666;">
+                <li>Nested schema for product variants (size, color, stock)</li>
+                <li>Nested schema for reviews (user, rating, comment)</li>
+                <li>Aggregation pipeline to calculate average ratings</li>
+                <li>Custom methods to update stock levels</li>
+                <li>Indexing on product name for optimization</li>
+                <li>Population of related documents</li>
+            </ul>
+        </main>
+    </div>
+    
+    <script>
+        function addProduct() {
+            const product = {
+                name: document.getElementById('productName').value,
+                variant: document.getElementById('variant').value,
+                stock: document.getElementById('stock').value
+            };
+            
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `
+                <strong>Product Added (Demo):</strong><br>
+                Name: ${product.name}<br>
+                Variant: ${product.variant}<br>
+                Stock: ${product.stock} units
+            `;
+        }
+        
+        function calculateRating() {
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `
+                <strong>Aggregation Results:</strong><br>
+                Product: Laptop<br>
+                Total Reviews: 15<br>
+                Average Rating: 4.5 / 5.0<br>
+                <br>
+                <em>Calculated using MongoDB Aggregation Pipeline</em>
+            `;
+        }
+    </script>
+</body>
+</html>

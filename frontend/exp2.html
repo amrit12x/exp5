@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 2 - Student Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Experiment 2: Student Management System (MVC)</h1>
+        </header>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <main class="demo-container">
+            <h2>Student Registration</h2>
+            
+            <div class="form-group">
+                <label>Student Name:</label>
+                <input type="text" id="studentName" placeholder="Enter student name">
+            </div>
+            
+            <div class="form-group">
+                <label>Roll Number:</label>
+                <input type="text" id="rollNo" placeholder="Enter roll number">
+            </div>
+            
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="email" placeholder="Enter email">
+            </div>
+            
+            <div class="form-group">
+                <label>Course:</label>
+                <input type="text" id="course" placeholder="Enter course">
+            </div>
+            
+            <button class="btn" onclick="addStudent()">Add Student</button>
+            <button class="btn" onclick="viewStudents()">View All Students</button>
+            
+            <div id="result"></div>
+            
+            <h3 style="margin-top: 30px;">MVC Architecture:</h3>
+            <ul style="line-height: 2; color: #666;">
+                <li><strong>Model:</strong> Student schema with name, rollNo, email, course</li>
+                <li><strong>View:</strong> EJS templates for rendering UI</li>
+                <li><strong>Controller:</strong> studentController.js handling business logic</li>
+                <li>Routes defined in studentRoutes.js</li>
+                <li>CRUD operations through web interface</li>
+            </ul>
+        </main>
+    </div>
+    
+    <script>
+        function addStudent() {
+            const student = {
+                name: document.getElementById('studentName').value,
+                rollNo: document.getElementById('rollNo').value,
+                email: document.getElementById('email').value,
+                course: document.getElementById('course').value
+            };
+            
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `
+                <strong>Student Added (Demo):</strong><br>
+                Name: ${student.name}<br>
+                Roll No: ${student.rollNo}<br>
+                Email: ${student.email}<br>
+                Course: ${student.course}
+            `;
+        }
+        
+        function viewStudents() {
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `
+                <strong>Registered Students:</strong><br>
+                1. John Doe - 101 - john@example.com - BCA<br>
+                2. Jane Smith - 102 - jane@example.com - MCA<br>
+                3. Mike Johnson - 103 - mike@example.com - BCA
+            `;
+        }
+    </script>
+</body>
+</html>

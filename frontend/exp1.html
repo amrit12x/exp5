@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 1 - CRUD Operations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Experiment 1: CRUD Operations using Mongoose</h1>
+        </header>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <main class="demo-container">
+            <h2>Product Management System</h2>
+            
+            <div class="form-group">
+                <label>Product Name:</label>
+                <input type="text" id="name" placeholder="Enter product name">
+            </div>
+            
+            <div class="form-group">
+                <label>Price:</label>
+                <input type="number" id="price" placeholder="Enter price">
+            </div>
+            
+            <div class="form-group">
+                <label>Category:</label>
+                <input type="text" id="category" placeholder="Enter category">
+            </div>
+            
+            <button class="btn" onclick="createProduct()">Create Product</button>
+            <button class="btn" onclick="getProducts()">Get All Products</button>
+            
+            <div id="result"></div>
+            
+            <h3 style="margin-top: 30px;">Implementation Details:</h3>
+            <ul style="line-height: 2; color: #666;">
+                <li>Created Product schema with name, price, category fields</li>
+                <li>Implemented POST /products for creating products</li>
+                <li>Implemented GET /products for reading all products</li>
+                <li>Implemented PUT /products/:id for updating products</li>
+                <li>Implemented DELETE /products/:id for deleting products</li>
+                <li>Applied validation on required fields</li>
+            </ul>
+        </main>
+    </div>
+    
+    <script>
+        const API_URL = 'YOUR_BACKEND_URL'; // Replace with deployed backend URL
+        
+        function createProduct() {
+            const product = {
+                name: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                category: document.getElementById('category').value
+            };
+            
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `
+                <strong>Product Created (Demo):</strong><br>
+                Name: ${product.name}<br>
+                Price: $${product.price}<br>
+                Category: ${product.category}
+            `;
+        }
+        
+        function getProducts() {
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `
+                <strong>Sample Products:</strong><br>
+                1. Laptop - $999 - Electronics<br>
+                2. Phone - $699 - Electronics<br>
+                3. Desk - $299 - Furniture
+            `;
+        }
+    </script>
+</body>
+</html>
